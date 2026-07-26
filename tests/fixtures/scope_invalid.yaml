@@ -1,0 +1,11 @@
+# Test fixture: intentionally invalid scope for error-handling tests.
+scope:
+  name: 'Invalid Scope Test'
+  targets:
+    cidr:
+      - 'not-a-valid-cidr'
+      - '10.0.1.0/24' # valid
+      - '392.168.0.0/24' # invalid octet
+    domains:
+      - '' # empty domain
+      - 'valid-domain.local'

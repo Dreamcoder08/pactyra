@@ -1,0 +1,16 @@
+[package]
+name = "pactyra-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Pactyra trust core binary — IPC server combining scope, guardian, and chain crates"
+
+[[bin]]
+name = "pactyra-core"
+path = "src/main.rs"
+
+[dependencies]
+pactyra-scope = { path = "../pactyra-scope" }
+pactyra-guardian = { path = "../pactyra-guardian" }
+pactyra-chain = { path = "../pactyra-chain" }

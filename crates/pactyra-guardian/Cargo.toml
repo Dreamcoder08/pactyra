@@ -1,0 +1,10 @@
+[package]
+name = "pactyra-guardian"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Runtime scope enforcement — validates tool invocations against compiled scope"
+
+[dependencies]
+pactyra-scope = { path = "../pactyra-scope" }

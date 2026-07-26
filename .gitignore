@@ -1,0 +1,28 @@
+# Rust
+target/
+Cargo.lock
+
+# Go
+vendor/
+
+# OS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Editor
+.idea/
+.vscode/
+*.iml
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+*.exe

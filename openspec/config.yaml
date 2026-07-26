@@ -1,0 +1,24 @@
+# openspec/config.yaml — Ark-Onyx Offensive SDD Configuration
+project: ark-onyx-offensive
+description: Authorized offensive security engineering platform
+stack:
+  languages:
+    - Rust (CLI, policy, sandboxing)
+    - Go (worker orchestration)
+    - Python (analysis pipelines)
+    - TypeScript (operator console)
+  build_systems: []
+  test_runners: []
+strict_tdd: false
+phases:
+  - propose
+  - spec
+  - design
+  - tasks
+  - apply
+  - verify
+  - archive
+conventions:
+  commit_convention: conventional-commits
+  test_framework: null
+  artifact_store: hybrid

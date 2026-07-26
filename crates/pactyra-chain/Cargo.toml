@@ -1,0 +1,10 @@
+[package]
+name = "pactyra-chain"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Append-only evidence receipt chain with Ed25519 signing and verification"
+
+[dependencies]
+pactyra-scope = { path = "../pactyra-scope" }

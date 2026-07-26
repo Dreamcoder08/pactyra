@@ -1,0 +1,18 @@
+[workspace]
+members = [
+  "crates/pactyra-scope",
+  "crates/pactyra-guardian",
+  "crates/pactyra-chain",
+  "crates/pactyra-core",
+]
+
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+repository = "https://github.com/arkelythex/pactyra"
+
+[workspace.dependencies]
+# Shared dependencies across crates will be declared here as SDD-002+ progresses

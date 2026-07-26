@@ -1,0 +1,81 @@
+# Pactyra Cyber Range
+#
+# Local test infrastructure for v0.1 golden path validation.
+# Provides 2-3 vulnerable-by-design target services for controlled testing.
+#
+# Usage:
+#   docker compose up -d          # Start all targets
+#   docker compose down           # Stop and remove
+#   docker compose logs -f         # Follow logs
+#
+# Network: 10.0.1.0/24 (matches tests/fixtures/scope_valid.yaml)
+
+version: '3.8'
+
+services:
+  # Target 1: Vulnerable web application (DVWA-like)
+  # Exposes HTTP on port 80, additional services on 8080, 8443
+  test-target:
+    image: vulnerables/web-dvwa:latest
+    container_name: pactyra-target-web
+    hostname: test-target.local
+    networks:
+      cyber-range:
+        ipv4_address: 10.0.1.10
+    ports:
+      - '10.0.1.10:80:80'
+      - '10.0.1.10:8080:8080'
+      - '10.0.1.10:8443:8443'
+    environment:
+      - MYSQL_ROOT_PASSWORD=pactyra-test
+    restart: unless-stopped
+
+  # Target 2: Service with open ports for discovery testing
+  # Exposes SSH (22), HTTP (80), MySQL (3306), and custom port (9090)
+  vulnerable-app:
+    image: nginx:alpine
+    container_name: pactyra-target-nginx
+    hostname: vulnerable-app.local
+    networks:
+      cyber-range:
+        ipv4_address: 10.0.1.20
+    ports:
+      - '10.0.1.20:80:80'
+      - '10.0.1.20:443:443'
+      - '10.0.1.20:8080:8080'
+    restart: unless-stopped
+
+  # Target 3: Additional service for port range testing
+  # Exposes high ports (8000-9000 range) for port scanning validation
+  extra-service:
+    image: httpd:alpine
+    container_name: pactyra-target-httpd
+    hostname: extra-service.local
+    networks:
+      cyber-range:
+        ipv4_address: 10.0.1.30
+    ports:
+      - '10.0.1.30:80:80'
+      - '10.0.1.30:443:443'
+      - '10.0.1.30:8443:8443'
+    restart: unless-stopped
+
+  # Gateway (excluded from scope)
+  gateway:
+    image: alpine:latest
+    container_name: pactyra-gateway
+    hostname: gateway.local
+    command: ['sh', '-c', "echo 'Gateway running' && tail -f /dev/null"]
+    networks:
+      cyber-range:
+        ipv4_address: 10.0.1.1
+    restart: unless-stopped
+
+networks:
+  cyber-range:
+    name: pactyra-cyber-range
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.1.0/24
+          gateway: 10.0.1.1
