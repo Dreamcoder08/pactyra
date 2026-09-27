@@ -4,7 +4,7 @@
 
 **Bound by scope. Proven by evidence.**
 
-Pactyra is an open-source, terminal-first offensive operations kernel for authorized, policy-constrained, and evidence-backed security assessments. It is a **reference implementation** developed under [Arkelythex](https://github.com/arkelythex) that demonstrates a technical thesis: authorized offensive automation can be safe, open, auditable, and reproducible.
+Pactyra is an open-source, terminal-first offensive operations kernel for authorized, policy-constrained, and evidence-backed security assessments. It is an **architecture and specification preview** developed under [Arkelythex](https://github.com/arkelythex) that defines a technical thesis: authorized offensive automation can be safe, open, auditable, and reproducible.
 
 ---
 
@@ -29,9 +29,9 @@ Offensive security operations are fragmented across tools, scripts, terminals, a
 
 ---
 
-## v0.1 Golden Path (First Light)
+## v0.1 Golden Path (First Light — planned)
 
-Pactyra v0.1 demonstrates the complete golden path against a local cyber range:
+Pactyra v0.1 is designed to demonstrate the complete golden path against a local cyber range. The executable path is under development; the repository currently documents the contracts, trust boundaries, and acceptance criteria:
 
 ```text
 1. Load and compile an authorized scope
@@ -78,12 +78,12 @@ Pactyra v0.1 demonstrates the complete golden path against a local cyber range:
 
 ## Quickstart
 
-> **Status:** SDD-000 — planning and governance phase. No runnable code yet. Implementation begins in SDD-002.
+> **Status:** Specification and architecture preview. No runnable golden path is published yet; implementation is planned in the SDD roadmap.
 
 ```bash
 # Prerequisites: Rust, Go 1.22+, Docker
 
-git clone https://github.com/arkelythex/pactyra.git
+git clone https://github.com/Dreamcoder08/pactyra.git
 cd pactyra
 make build
 make golden-path
